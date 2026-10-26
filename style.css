@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;600&display=swap");
+
+/* ===== Warna: terinspirasi kuning almamater UI ===== */
+:root {
+    --kuning: #ffc72c;
+    --navy: #121c45;
+    --navy-gelap: #0a1230;
+    --navy-terang: #1d2b66;
+    --krem: #fff6da;
+    --redup: #b9c0de;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+::selection {
+    background: var(--kuning);
+    color: var(--navy);
+}
+
+/* ===== Halaman: kuning dengan pola titik ===== */
+html {
+    min-height: 100%;
+    padding: 48px 16px;
+    background-color: var(--kuning);
+    background-image: radial-gradient(rgba(10, 18, 48, 0.16) 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
+}
+
+/* ===== Kartu profil ===== */
+body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 0 32px 36px;
+    overflow: hidden;
+    background: var(--navy);
+    color: var(--krem);
+    font-family: "Figtree", system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    border-radius: 28px;
+    box-shadow: 10px 10px 0 var(--navy-gelap);
+    animation: muncul 0.6s ease-out both;
+}
+
+/* Pita kuning di bagian atas kartu */
+body::before {
+    content: "";
+    order: -2;
+    height: 120px;
+    margin: 0 -32px;
+    background-color: var(--kuning);
+    background-image: repeating-linear-gradient(
+        135deg,
+        transparent 0 14px,
+        rgba(10, 18, 48, 0.1) 14px 28px
+    );
+}
+
+/* ===== Foto profil: menimpa pita ===== */
+img {
+    position: relative;
+    order: -1;
+    align-self: center;
+    width: 148px;
+    height: 148px;
+    margin-top: -74px;
+    object-fit: cover;
+    border: 6px solid var(--navy);
+    border-radius: 50%;
+    background: var(--navy-terang);
+    box-shadow: 0 0 0 4px var(--kuning);
+    color: var(--redup);
+    font-size: 0.8rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+img:hover {
+    transform: rotate(-4deg) scale(1.04);
+}
+
+/* ===== Judul ===== */
+h1 {
+    margin: 20px 0 8px;
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
+    font-size: clamp(2rem, 7vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.1;
+    text-align: center;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 28px 0 14px;
+    color: var(--kuning);
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+/* Garis pemisah yang mengisi sisa lebar */
+h2::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background: rgba(255, 199, 44, 0.3);
+    border-radius: 2px;
+}
+
+/* ===== Baris data diri ===== */
+p {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin: 0 0 10px;
+    padding: 12px 16px;
+    background: var(--navy-terang);
+    border-left: 5px solid var(--kuning);
+    border-radius: 0 14px 14px 0;
+    transition: transform 0.2s ease;
+}
+
+p:hover {
+    transform: translateX(5px);
+}
+
+b {
+    flex: 0 0 104px;
+    color: var(--kuning);
+    font-weight: 600;
+}
+
+/* ===== Tentang saya: kotak kutipan kuning ===== */
+p:last-of-type {
+    position: relative;
+    display: block;
+    margin-bottom: 0;
+    padding: 22px 22px 22px 60px;
+    background: var(--kuning);
+    color: var(--navy);
+    border-left: none;
+    border-radius: 18px;
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+p:last-of-type:hover {
+    transform: none;
+}
+
+p:last-of-type::before {
+    content: "\201C";
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    color: var(--navy);
+    font-family: "Bricolage Grotesque", Georgia, serif;
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1;
+    opacity: 0.35;
+}
+
+/* ===== Animasi masuk (sekali saja) ===== */
+@keyframes muncul {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+/* ===== Layar kecil ===== */
+@media (max-width: 480px) {
+    html {
+        padding: 24px 12px;
+    }
+
+    body {
+        padding: 0 20px 28px;
+        box-shadow: 6px 6px 0 var(--navy-gelap);
+    }
+
+    body::before {
+        margin: 0 -20px;
+    }
+
+    b {
+        flex-basis: 92px;
+    }
+}
+
+/* ===== Hormati pengaturan "kurangi gerakan" ===== */
+@media (prefers-reduced-motion: reduce) {
+    body {
+        animation: none;
+    }
+
+    img,
+    p {
+        transition: none;
+    }
+}
