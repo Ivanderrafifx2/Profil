@@ -36,7 +36,6 @@ body {
     max-width: 520px;
     margin: 0 auto;
     padding: 0 32px 36px;
-    overflow: hidden;
     background: var(--navy);
     color: var(--krem);
     font-family: "Figtree", system-ui, sans-serif;
@@ -53,6 +52,7 @@ body::before {
     order: -2;
     height: 120px;
     margin: 0 -32px;
+    border-radius: 28px 28px 0 0;
     background-color: var(--kuning);
     background-image: repeating-linear-gradient(
         135deg,
